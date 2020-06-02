@@ -17,51 +17,101 @@ public class Vista1 extends JFrame {
     JTextField inputRAM ;
     JTextField inputSSD;
     JTextField inputPULGADAS;
+    private JLabel etiquetaID;
+    private JLabel etiquetaRAM;
+    private JLabel etiquetaSSD;
+    private JLabel etiquetaPULGADAS;
+    private JButton botonMas;
+    private JButton botonMenos;
+    private JButton botonBorrar;
+    private JButton botonActualizar;
+    private JButton botonCrear;
+    private JButton botonSalir;
+
     public Vista1(){
+
         super("Aula ordenadores portátiles");
+        setVentana();
+        Container cp = setLayaout();
+        crearPanelInferior(cp);
+        crearPanelSuperior(cp);
+        crearPanelCentral(cp);
+
+    }
+
+    private void setVentana() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize(); //obtener tamaño ventana
         int height = pantalla.height;
         int width = pantalla.width;
         setSize(width/3, height/3);  //mitad de la pantalla
         setLocationRelativeTo(null); //centramos la ventana
+    }
+
+    private Container setLayaout() {
         Container cp = getContentPane();
         BorderLayout borderLayout = new BorderLayout();
         cp.setLayout(borderLayout);
-        JButton botonMas = new JButton(">>");
+        return cp;
+    }
+
+    private void crearPanelInferior(Container cp) {
+        crearBotonesPanelInferior();
+        crearEventosBotonesPanelInferior();
+        crearBotonera(cp);
+    }
+
+    private void crearPanelSuperior(Container cp) {
+        JLabel etiquetaSuperior = new JLabel("Datos de ordenadores portátiles");
+        JPanel panelSuperior = new JPanel();
+        panelSuperior.add(etiquetaSuperior);
+        cp.add(panelSuperior, BorderLayout.NORTH);
+
+    }
+
+    private void crearPanelCentral(Container cp) {
+        JPanel panelCentral = new JPanel();
+        panelCentral.setLayout(new GridLayout(8,2));
+        crearEtiquetasPanelCentral();
+        crearCamposForm();
+        disponerForm(panelCentral);
+        cp.add(panelCentral, BorderLayout.CENTER);
+    }
+
+    private void crearBotonesPanelInferior() {
+        botonMas = new JButton(">>");
+        botonMenos = new JButton("<<");
+        botonBorrar = new JButton("Borrar");
+        botonActualizar = new JButton("Actualizar");
+        botonCrear = new JButton("Crear");
+        botonSalir = new JButton("Salir");
+    }
+
+    private void crearEventosBotonesPanelInferior() {
         botonMas.addActionListener(actionEvent -> {
             contador++;
-            if (contador >= listaOrdenadores.size())
+            if (contador >= listaOrdenadores.size()) {
                 contador %= listaOrdenadores.size();
-            inputID.setText(listaOrdenadores.get(contador).getId() + "");
-            inputRAM.setText(listaOrdenadores.get(contador).getRam() + "");
-            inputSSD.setText(listaOrdenadores.get(contador).getSsd() + "");
-            inputPULGADAS.setText(listaOrdenadores.get(contador).getPantalla() + "");
+            }
+            setDatosForm(listaOrdenadores.get(contador));
         });
-        JButton botonMenos = new JButton("<<");
         botonMenos.addActionListener(actionEvent -> {
             contador--;
-            if (contador < 0)
+            if (contador < 0) {
                 contador += listaOrdenadores.size();
-            inputID.setText(listaOrdenadores.get(contador).getId() + "");
-            inputRAM.setText(listaOrdenadores.get(contador).getRam() + "");
-            inputSSD.setText(listaOrdenadores.get(contador).getSsd() + "");
-            inputPULGADAS.setText(listaOrdenadores.get(contador).getPantalla() + "");
+            }
+            setDatosForm(listaOrdenadores.get(contador));
         });
-        JButton botonBorrar = new JButton("Borrar");
         botonBorrar.addActionListener(actionEvent -> {
             int idBorrar = Integer.parseInt(inputID.getText());
             ordenadorDAO.borrarOrdenadorPorId(idBorrar);
             listaOrdenadores.remove(contador);
             contador--;
-            if (contador < 0)
+            if (contador < 0) {
                 contador += listaOrdenadores.size();
-            inputID.setText(listaOrdenadores.get(contador).getId() + "");
-            inputRAM.setText(listaOrdenadores.get(contador).getRam() + "");
-            inputSSD.setText(listaOrdenadores.get(contador).getSsd() + "");
-            inputPULGADAS.setText(listaOrdenadores.get(contador).getPantalla() + "");
+            }
+            setDatosForm(listaOrdenadores.get(contador));
         });
-        JButton botonActualizar = new JButton("Actualizar");
         botonActualizar.addActionListener(actionEvent -> {
             Ordenador ordenador = new Ordenador(Integer.parseInt(inputID.getText()),
                     Integer.parseInt(inputRAM.getText()), 0,0);
@@ -72,7 +122,6 @@ public class Vista1 extends JFrame {
             ordenadorDAO.ampliarMemoriaRAMOrdenadorPorId(ordenador);
             inputRAM.setText(ordenador.getRam() + "");
         });
-        JButton botonCrear = new JButton("Crear");
         botonCrear.addActionListener(actionEvent -> {
             String sRam = JOptionPane.showInputDialog("Introduce ram");
             int iRam = Integer.parseInt(sRam);
@@ -84,8 +133,10 @@ public class Vista1 extends JFrame {
             ordenadorDAO.crearOrdeandor(ordenador);
             listaOrdenadores = ordenadorDAO.listarTodosOrdenadores();
         });
-        JButton botonSalir = new JButton("Salir");
         botonSalir.addActionListener(actionEvent -> System.exit(0));
+    }
+
+    private void crearBotonera(Container cp) {
         JPanel panelInferior = new JPanel();
         panelInferior.add(botonSalir);
         panelInferior.add(botonBorrar);
@@ -94,40 +145,55 @@ public class Vista1 extends JFrame {
         panelInferior.add(botonActualizar);
         panelInferior.add(botonCrear);
         cp.add(panelInferior,BorderLayout.SOUTH);
-        JLabel etiquetaSuperior = new JLabel("Datos de ordenadores portátiles");
-        JPanel panelSuperior = new JPanel();
-        panelSuperior.add(etiquetaSuperior);
-        cp.add(panelSuperior, BorderLayout.NORTH);
-        JPanel panelCentral = new JPanel();
-        panelCentral.setLayout(new GridLayout(8,2));
-        JLabel etiquetaID = new JLabel("ID", SwingConstants.CENTER);
-        JLabel etiquetaRAM = new JLabel("RAM", SwingConstants.CENTER);
-        JLabel etiquetaSSD = new JLabel("SSD", SwingConstants.CENTER);
-        JLabel etiquetaPULGADAS = new JLabel("PULGADAS", SwingConstants.CENTER);
+    }
+
+    private void crearEtiquetasPanelCentral() {
+        etiquetaID = new JLabel("ID", SwingConstants.CENTER);
+        etiquetaRAM = new JLabel("RAM", SwingConstants.CENTER);
+        etiquetaSSD = new JLabel("SSD", SwingConstants.CENTER);
+        etiquetaPULGADAS = new JLabel("PULGADAS", SwingConstants.CENTER);
         etiquetaID.setFont(new Font("Serif", Font.BOLD, 18));
         etiquetaSSD.setFont(new Font("Serif", Font.BOLD, 18));
         etiquetaRAM.setFont(new Font("Serif", Font.BOLD, 18));
         etiquetaPULGADAS.setFont(new Font("Serif", Font.BOLD, 18));
+    }
 
-        inputID = new JTextField(5); inputID.setText(listaOrdenadores.get(contador ) .getId() + ""); inputID.setEnabled(false);
-        inputRAM = new JTextField(5); inputRAM.setText(listaOrdenadores.get(contador).getRam() + "");
-        inputSSD = new JTextField(5); inputSSD.setText(listaOrdenadores.get(contador).getSsd() + "");
-        inputPULGADAS = new JTextField(5); inputPULGADAS.setText(listaOrdenadores.get(contador).getPantalla() + "");
+    private void crearCamposForm() {
+        inputID = new JTextField(5);
+        inputRAM = new JTextField(5);
+        inputSSD = new JTextField(5);
+        inputPULGADAS = new JTextField(5);
+        Ordenador ordenador = listaOrdenadores.get(contador);
+        setDatosForm(ordenador);
+        inputID.setEnabled(false);
+    }
+
+    private void disponerForm(JPanel panelCentral) {
         JLabel etiquetaVacia = new JLabel("  ");
-        panelCentral.add(etiquetaVacia); panelCentral.add(etiquetaVacia);
-        panelCentral.add(etiquetaID); panelCentral.add(inputID);
-        panelCentral.add(etiquetaVacia); panelCentral.add(etiquetaVacia);
-        panelCentral.add(etiquetaRAM); panelCentral.add(inputRAM);
-        panelCentral.add(etiquetaVacia); panelCentral.add(etiquetaVacia);
-        panelCentral.add(etiquetaSSD); panelCentral.add(inputSSD);
-        panelCentral.add(etiquetaVacia); panelCentral.add(etiquetaVacia);
-        panelCentral.add(etiquetaPULGADAS); panelCentral.add(inputPULGADAS);
-        panelCentral.add(etiquetaVacia); panelCentral.add(etiquetaVacia);
-        cp.add(panelCentral, BorderLayout.CENTER);
+        panelCentral.add(etiquetaVacia);
+        panelCentral.add(etiquetaVacia);
+        panelCentral.add(etiquetaID);
+        panelCentral.add(inputID);
+        panelCentral.add(etiquetaVacia);
+        panelCentral.add(etiquetaVacia);
+        panelCentral.add(etiquetaRAM);
+        panelCentral.add(inputRAM);
+        panelCentral.add(etiquetaVacia);
+        panelCentral.add(etiquetaVacia);
+        panelCentral.add(etiquetaSSD);
+        panelCentral.add(inputSSD);
+        panelCentral.add(etiquetaVacia);
+        panelCentral.add(etiquetaVacia);
+        panelCentral.add(etiquetaPULGADAS);
+        panelCentral.add(inputPULGADAS);
+        panelCentral.add(etiquetaVacia);
+        panelCentral.add(etiquetaVacia);
+    }
 
-
-
-
-
+    private void setDatosForm(Ordenador ordenador) {
+        inputID.setText(ordenador.getId() + "");
+        inputRAM.setText(ordenador.getRam() + "");
+        inputSSD.setText(ordenador.getSsd() + "");
+        inputPULGADAS.setText(ordenador.getPantalla() + "");
     }
 }
