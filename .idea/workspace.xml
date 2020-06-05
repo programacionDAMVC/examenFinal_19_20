@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27df8c78-b134-44f6-97d8-44d651945b0b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ejercicio2/Test3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ejercicio2/vista3/Vista3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BD/ordenadores.db" beforeDir="false" afterPath="$PROJECT_DIR$/BD/ordenadores.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ejercicio2/vista1/Vista1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ejercicio2/vista1/Vista1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ejercicio2/vista3/Vista3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ejercicio2/vista3/Vista3.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +51,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test1">
+  <component name="RunManager" selected="Application.Test3">
     <configuration name="AulaOrdenador" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ejercicio1.modelo.AulaOrdenador" />
       <module name="examenFinalProgramacion19_20" />
@@ -122,9 +119,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test1" />
         <item itemvalue="Application.Test3" />
         <item itemvalue="Application.Test2" />
+        <item itemvalue="Application.Test1" />
         <item itemvalue="Application.OrdenadorDAO" />
         <item itemvalue="Application.AulaOrdenador" />
       </list>
@@ -141,6 +138,14 @@
       <option name="presentableId" value="Default" />
       <updated>1589631638278</updated>
     </task>
+    <task id="LOCAL-00001" summary="Refactorización antes MVP">
+      <created>1591115782069</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1591115782069</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,6 +160,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Refactorización antes MVP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactorización antes MVP" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
