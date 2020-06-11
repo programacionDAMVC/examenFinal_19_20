@@ -4,6 +4,7 @@ import ejercicio2.modelo.Ordenador;
 import ejercicio2.modelo.OrdenadorDAO;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.List;
 
@@ -132,9 +133,11 @@ public class Vista2  extends JFrame {
         cp.add(panelInferior, BorderLayout.SOUTH);
         //CENTRAL
         JPanel panelCentral = new JPanel();
+        panelCentral.setBorder(BorderFactory.createEmptyBorder(10, 10,10,10));
         GridLayout gl = new GridLayout(7,2);
-        gl.setHgap(5); gl.setVgap(5);
+  //      gl.setHgap(10); gl.setVgap(10);
         panelCentral.setLayout(gl);
+ //       panelCentral.setBorder(border);
         JLabel etiquetaVacia = new JLabel("");
         JLabel etiquetaID = new JLabel("ID",SwingConstants.CENTER );
         etiquetaID.setFont(font1);
@@ -144,10 +147,10 @@ public class Vista2  extends JFrame {
         etiquetaSSD.setFont(font1);
         JLabel etiquetaPULG= new JLabel("PULGADAS", SwingConstants.CENTER);
         etiquetaPULG.setFont(font1);
-        inputID = new JTextField(10); inputID.setText(listaOrdenadores.get(0).getId() +"");
-        inputRAM = new JTextField(10); inputRAM.setText(listaOrdenadores.get(0).getRam() +"");
-        inputSSD = new JTextField(10); inputSSD.setText(listaOrdenadores.get(0).getSsd() +"");
-        inputPULG = new JTextField(10); inputPULG.setText(listaOrdenadores.get(0).getPantalla() +"");
+        inputID = new JTextField(10); inputID.setText(listaOrdenadores.get(0).getId() +""); //inputID.setBorder(border);
+        inputRAM = new JTextField(10); inputRAM.setText(listaOrdenadores.get(0).getRam() +""); //inputRAM.setBorder(border);
+        inputSSD = new JTextField(10); inputSSD.setText(listaOrdenadores.get(0).getSsd() +""); //inputSSD.setBorder(border);
+        inputPULG = new JTextField(10); inputPULG.setText(listaOrdenadores.get(0).getPantalla() +""); //inputPULG.setBorder(border);
         panelCentral.add(etiquetaVacia);  panelCentral.add(etiquetaVacia);
         panelCentral.add(etiquetaVacia);  panelCentral.add(etiquetaVacia);
         panelCentral.add(etiquetaID); panelCentral.add(inputID);

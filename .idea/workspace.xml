@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="27df8c78-b134-44f6-97d8-44d651945b0b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BD/ordenadores.db" beforeDir="false" afterPath="$PROJECT_DIR$/BD/ordenadores.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ejercicio2/vista3/Vista3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ejercicio2/vista3/Vista3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ejercicio2/vista2/Vista2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ejercicio2/vista2/Vista2.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,26 +50,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test3">
-    <configuration name="AulaOrdenador" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ejercicio1.modelo.AulaOrdenador" />
+  <component name="RunManager" selected="Application.TestCalculadora">
+    <configuration name="Auxiliar" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="calculadora.Auxiliar" />
       <module name="examenFinalProgramacion19_20" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ejercicio1.modelo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrdenadorDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ejercicio2.modelo.OrdenadorDAO" />
-      <module name="examenFinalProgramacion19_20" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ejercicio2.modelo.*" />
+          <option name="PATTERN" value="calculadora.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -117,13 +103,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestCalculadora" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestCalculadora" />
+      <module name="examenFinalProgramacion19_20" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test3" />
+        <item itemvalue="Application.TestCalculadora" />
+        <item itemvalue="Application.Auxiliar" />
         <item itemvalue="Application.Test2" />
         <item itemvalue="Application.Test1" />
-        <item itemvalue="Application.OrdenadorDAO" />
-        <item itemvalue="Application.AulaOrdenador" />
+        <item itemvalue="Application.Test3" />
       </list>
     </recent_temporary>
   </component>
